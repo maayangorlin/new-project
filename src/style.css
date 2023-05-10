@@ -45,3 +45,9 @@ ul {
 .deg {
   font-size: 50px;
 }
+
+.link {
+  color: blue;
+  font-size: 20px;
+  text-align: center;
+}
