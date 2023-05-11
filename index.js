@@ -19,9 +19,16 @@ function formatDate(date) {
   }
   return `${day}  ${hour}:${minutes}`;
 }
+function getForcast(coords) {
+  console.log(coords);
+  let key = "53ae0t876604f4933a8a0b01dac8ofa7";
+  let URL = `https://api.shecodes.io/weather/v1/forecast?lon=${coords.lon}&lat=${coords.lat}&key=${key}&units=metric`;
+  axios.get(URL).then(displayForcast);
+  console.log(URL);
+}
+
 function displayWeather(response) {
   console.log(response.data.main.humidity);
-  console.log(response.data.weather[0].main);
   document.querySelector("#h1-city").innerHTML = response.data.name;
   document.querySelector("#number").innerHTML = Math.round(
     response.data.main.temp
@@ -30,6 +37,7 @@ function displayWeather(response) {
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+  getForcast(response.data.coord);
 }
 
 function search(city) {
@@ -56,19 +64,6 @@ function changeCelcius(event) {
   let temperature = tempElement.innerHTML;
   tempElement.innerHTML = 17;
 }
-
-let current = document.querySelector(".date");
-current.innerHTML = formatDate(new Date());
-
-let cityForm = document.querySelector("#city");
-cityForm.addEventListener("submit", changeCity);
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", changeFahrenheit);
-
-let celcius = document.querySelector("#celcius");
-celcius.addEventListener("click", changeCelcius);
-
 function currentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(currentpos);
@@ -82,12 +77,8 @@ function currentpos(position) {
   axios.get(url).then(displayWeather);
 }
 
-let locationButton = document.querySelector("#currentLocation");
-locationButton.addEventListener("click", currentLocation);
-
-search("Jerusalem");
-
-function displayForcast(params) {
+function displayForcast(response) {
+  console.log(response);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
   let forcastElement = document.querySelector("#forcast");
   let forcastHTML = `<div class = "row">`;
@@ -104,7 +95,11 @@ function displayForcast(params) {
               />
             </div>
             <div class="days-temp">
-              &deg;18 <span class="min">&deg;12</span>
+              &deg;${Math.round(
+                response.data.daily[0].temperature.maximum
+              )} <span class="min">&deg;${Math.round(
+        response.data.daily[0].temperature.minimum
+      )}</span>
             </div>
           </div>
     `;
@@ -114,4 +109,21 @@ function displayForcast(params) {
   forcastElement.innerHTML = forcastHTML;
 }
 
-displayForcast();
+let current = document.querySelector(".date");
+current.innerHTML = formatDate(new Date());
+
+let cityForm = document.querySelector("#city");
+cityForm.addEventListener("submit", changeCity);
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", changeFahrenheit);
+
+let celcius = document.querySelector("#celcius");
+celcius.addEventListener("click", changeCelcius);
+
+let locationButton = document.querySelector("#currentLocation");
+locationButton.addEventListener("click", currentLocation);
+
+search("Jerusalem");
+
+//displayForcast();
