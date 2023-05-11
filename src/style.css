@@ -12,15 +12,12 @@ body {
 h1 {
   margin: 20px 0px 5px 0px;
   padding: 0px;
+  font-size: 20px;
+  opacity: 0.6;
 }
 
 h2 {
   padding: 0px;
-}
-
-a {
-  color: #03bfa6;
-  font-size: smaller;
 }
 
 ul {
@@ -29,7 +26,7 @@ ul {
 }
 
 .deg {
-  font-size: 50px;
+  font-size: 60px;
 }
 
 .link {
@@ -45,4 +42,8 @@ ul {
 
 .min {
   opacity: 0.5;
+}
+
+.weather-day {
+  opacity: 0.2;
 }
