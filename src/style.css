@@ -51,3 +51,11 @@ ul {
   text-align: center;
   display: block;
 }
+
+.col-2 {
+  text-align: center;
+}
+
+.min {
+  opacity: 0.5;
+}
