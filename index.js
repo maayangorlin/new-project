@@ -31,11 +31,9 @@ function displayWeather(response) {
   document.querySelector("#number").innerHTML = Math.round(
     response.data.temperature.current
   );
-
   document.querySelector("#humidity").innerHTML =
     response.data.temperature.humidity;
   document.querySelector("#wind").innerHTML = response.data.wind.speed;
-
   let image = `
     <span class="weather-img">
       <img
@@ -45,14 +43,9 @@ function displayWeather(response) {
       />
     </span>
 `;
-
   document.querySelector("#today-weather-img").innerHTML = image;
-
-  //.setAttribute("src", response.data.condition.icon_url);
-
   document.querySelector("#description").innerHTML =
     response.data.condition.description;
-
   getForcast(response.data.coordinates);
 }
 
@@ -75,15 +68,12 @@ function currentLocation(event) {
 function currentpos(position) {
   console.log(position);
   let key = "53ae0t876604f4933a8a0b01dac8ofa7";
-  // let lat = position.coords.latitude;
-  // let lon = position.coords.longitude;
-  let url = `https://api.shecodes.io/weather/v1/forecast?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${key}&units=metric`;
+  let url = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${key}&units=metric`;
   axios.get(url).then(displayWeather);
-  getForcast(position.data.coordinates);
+  getForcast(position.coords);
 }
 
 function formatDay(timestamp) {
-  console.log(timestamp);
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -91,12 +81,10 @@ function formatDay(timestamp) {
 }
 
 function displayForcast(response) {
-  console.log(response.data.daily);
   let forcast = response.data.daily;
   let forcastElement = document.querySelector("#forcast");
   let forcastHTML = `<div class = "row">`;
   forcast.forEach(function (day, index) {
-    console.log(day);
     if (index < 6) {
       forcastHTML += `
   <div class="col-2">
@@ -120,7 +108,6 @@ function displayForcast(response) {
     `;
     }
   });
-
   forcastHTML = forcastHTML + `</div>`;
   forcastElement.innerHTML = forcastHTML;
 }
@@ -135,5 +122,3 @@ let locationButton = document.querySelector("#currentLocation");
 locationButton.addEventListener("click", currentLocation);
 
 search("Jerusalem");
-
-//displayForcast();
