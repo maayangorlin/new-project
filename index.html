@@ -18,68 +18,71 @@
   </head>
   <body>
     <div class="container">
-      <div class="app">
-        <form id="city">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <form id="city" class="mb-3">
+            <div class="row">
+              <div class="col-8">
+                <input
+                  class="form-control"
+                  type="search"
+                  value="Enter city"
+                  autofocus="on"
+                  id="searchcity"
+                />
+              </div>
+              <div class="col-2">
+                <input
+                  type="submit"
+                  class="btn btn-dark shadow-sm"
+                  value="Search"
+                  id="search-button"
+                />
+              </div>
+              <div class="col-2">
+                <button class="btn btn-light shadow-sm" id="currentLocation">
+                  <i class="fa-solid fa-location-dot"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <h1 id="h1-city"></h1>
+
           <div class="row">
-            <div class="col-auto">
-              <input
-                class="form-control"
-                type="search"
-                value="Enter city"
-                autofocus="on"
-                id="searchcity"
-              />
-            </div>
-            <div class="col-auto">
-              <input
-                type="submit"
-                class="btn btn-dark shadow-sm"
-                value="Search"
-              />
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-light shadow-sm" id="currentLocation">
-                Current Location
-              </button>
-            </div>
-          </div>
-        </form>
+            <div class="col-6">
+              <ul>
+                <li class="date"></li>
 
-        <h1 id="h1-city"></h1>
-
-        <div class="row">
-          <div class="col-6">
-            <ul>
-              <li class="date"></li>
-
-              <li id="description"></li>
-              <li>
-                <span id="today-weather-img">
-                  <img src="" alt="" />
-                </span>
-                <span class="deg" id="number"> </span>
-                <span>&deg;C </span>
-              </li>
-            </ul>
-            <!-- <div class="imgNow">
+                <li id="description"></li>
+                <li>
+                  <span id="today-weather-img">
+                    <img src="" alt="" />
+                  </span>
+                  <span class="deg" id="number"> </span>
+                  <span>&deg;C </span>
+                </li>
+              </ul>
+              <!-- <div class="imgNow">
               <i class="fa-solid fa-sun"></i>
             </div> -->
+            </div>
+            <div class="col-4">
+              <ul>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"> </span> km/h</li>
+              </ul>
+            </div>
           </div>
-          <div class="col-4">
-            <ul>
-              <li>Humidity: <span id="humidity"></span>%</li>
-              <li>Wind: <span id="wind"> </span> km/h</li>
-            </ul>
-          </div>
+          <div id="forcast"></div>
         </div>
-        <div id="forcast"></div>
-      </div>
 
-      <div class="link">
-        <a target="_blank" href="https://github.com/maayangorlin/new-project"
-          >open source code
-        </a>
-        by Ma'ayan Gorlin
+        <div class="link">
+          <a target="_blank" href="https://github.com/maayangorlin/new-project"
+            >open source code
+          </a>
+          by Ma'ayan Gorlin
+        </div>
       </div>
     </div>
     <script src="index.js"></script>

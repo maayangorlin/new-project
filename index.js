@@ -69,6 +69,7 @@ function currentpos(position) {
   console.log(position);
   let key = "53ae0t876604f4933a8a0b01dac8ofa7";
   let url = `https://api.shecodes.io/weather/v1/current?lon=${position.coords.longitude}&lat=${position.coords.latitude}&key=${key}&units=metric`;
+
   axios.get(url).then(displayWeather);
   getForcast(position.coords);
 }
