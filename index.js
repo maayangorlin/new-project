@@ -15,8 +15,10 @@ function formatDate(date) {
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
-    hour = `0${minutes}`;
+    minutes = `0${minutes}`;
   }
+  console.log(date.getHours());
+  console.log(date.getMinutes());
   return `${day}  ${hour}:${minutes}`;
 }
 function getForcast(coords) {

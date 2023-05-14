@@ -20,13 +20,23 @@ body {
   border-radius: 5px;
   z-index: 1;
   box-shadow: 0px 0px 15px 5px rgb(0 0 0 / 20%);
+  font-family: "Caveat", cursive;
+  font-size: larger;
 }
 
 h1 {
   margin: 20px 0px 5px 0px;
   padding: 0px;
-  font-size: 20px;
+  font-size: 35px;
   opacity: 0.6;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 23px;
+}
+#description {
+  font-size: 23px;
 }
 
 h2 {
@@ -38,8 +48,19 @@ ul {
   padding: 0px;
 }
 
-.deg {
-  font-size: 60px;
+#number {
+  font-size: 70px;
+  position: relative;
+  top: 15px;
+  left: 15px;
+}
+#celc {
+  position: relative;
+  left: 20px;
+}
+#today-weather-img {
+  position: relative;
+  left: 35px;
 }
 
 .link {
@@ -51,7 +72,7 @@ ul {
 .weather-forecast-date {
   text-align: center;
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 20px;
   opacity: 0.5;
 }
 
